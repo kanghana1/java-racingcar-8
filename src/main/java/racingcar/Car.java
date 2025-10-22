@@ -20,5 +20,11 @@ public class Car {
         return this.winCount;
     }
 
+    public void canGo() {
+        int pickNum = Randoms.pickNumberInRange(0, 9);
+        if (pickNum >= 4) {
+            winCount++;
+        }
+    }
 
 }
