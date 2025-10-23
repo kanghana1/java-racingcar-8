@@ -3,7 +3,6 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +16,14 @@ public class Race {
         outputPrinter = new OutputPrinter();
     }
 
-    public void startRacing() {
+    public void startRacing(int tryCnt) {
+        System.out.println("실행 결과");
+        for (int i = 0 ; i < tryCnt ; i++) {
+            this.startPerRacing();
+        }
+    }
+
+    public void startPerRacing() {
         for (Car car : participants) {
             car.canGo();
             outputPrinter.printPerRaceResult(car);
@@ -46,5 +52,4 @@ public class Race {
                 .map(str -> new Car(str.trim()))
                 .collect(Collectors.toList());
     }
-
 }
