@@ -23,14 +23,6 @@ public class Race {
         }
     }
 
-    public void startPerRacing() {
-        for (Car car : participants) {
-            car.canGo();
-            outputPrinter.printPerRaceResult(car);
-        }
-        System.out.println();
-    }
-
     public void winnerAnnouncement() {
         Collections.sort(participants);
 
@@ -47,9 +39,22 @@ public class Race {
         outputPrinter.finalResult(winners);
     }
 
+    private void startPerRacing() {
+        for (Car car : participants) {
+            car.canGo();
+            outputPrinter.printPerRaceResult(car);
+        }
+        System.out.println();
+    }
+
     private void parseUser(String users) {
         participants = Arrays.stream(users.trim().split(","))
-                .map(str -> new Car(str.trim()))
+                .map(str -> {
+                    if (str.trim().length() > 5) {
+                        throw new IllegalArgumentException("이름이 5글자를 초과했습니다.");
+                    }
+                    return new Car(str.trim());
+                })
                 .collect(Collectors.toList());
     }
 }
