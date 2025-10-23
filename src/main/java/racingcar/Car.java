@@ -2,7 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private String name;
     private int winCount;
@@ -27,4 +27,8 @@ public class Car {
         }
     }
 
+    @Override
+    public int compareTo(Car o) {
+        return o.winCount - this.winCount;
+    }
 }

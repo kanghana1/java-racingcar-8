@@ -14,5 +14,7 @@ public class Application {
         for (int i = 0 ; i < tryCount ; i++) {
             race.startRacing();
         }
+
+        race.winnerAnnouncement();
     }
 }
